@@ -1,2 +1,2 @@
 # iac
-Monorepo for Infrastructure as Code.
+Infrastructure as Code
