@@ -1,10 +1,10 @@
 remote_state {
   backend = "s3"
   config = {
-    endpoint                           = "https://frzjkivjixyp.compat.objectstorage.eu-frankfurt-1.oraclecloud.com"
-    region                             = "eu-frankfurt-1"
-    bucket                             = "terraform-states"
-    key                                = "iac/inputs/${path_relative_to_include()}/terraform.tfstate"
+    endpoint = "https://frzjkivjixyp.compat.objectstorage.eu-frankfurt-1.oraclecloud.com"
+    region   = "eu-frankfurt-1"
+    bucket   = "terraform-states"
+    key      = "iac/inputs/${path_relative_to_include()}/terraform.tfstate"
     shared_credentials_file            = "/Users/marcosanavia/Git/.creds/terraform-states_bucket_credentials"
     skip_region_validation             = true
     skip_credentials_validation        = true
@@ -19,12 +19,25 @@ remote_state {
   }
 }
 
-generate "backend" {
-  path      = "backend.tf"
+locals {
+  providers = try(yamldecode(file("${get_original_terragrunt_dir()}/providers.yaml")), [])
+}
+
+generate "versions" {
+  path      = "versions.tf"
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 terraform {
   backend "s3" {}
+
+  required_providers {
+    %{if contains(local.providers, "github")}
+      github = {
+        source  = "integrations/github"
+        version = "~> 6.0"
+    }
+    %{endif}
+  }
 }
 EOF
 }

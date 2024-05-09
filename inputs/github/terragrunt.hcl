@@ -35,7 +35,7 @@ inputs = {
     msanavia = {
       archive_on_destroy     = true
       delete_branch_on_merge = true
-      description            = "GitHub Profile"
+      description            = "GitHub Personal Profile"
       visibility             = "public"
     }
   }
