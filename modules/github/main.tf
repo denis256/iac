@@ -8,13 +8,11 @@ resource "github_repository" "repository" {
   vulnerability_alerts = true
 
 }
-
 resource "github_repository_dependabot_security_updates" "dependabot" {
   for_each   = local.dependabot_enabled
   repository = github_repository.repository[each.key].id
   enabled    = true
 }
-
 resource "github_branch_protection" "main_branch_protection" {
   for_each                        = var.github_repositories
   repository_id                   = github_repository.repository[each.key].id
@@ -27,4 +25,3 @@ resource "github_branch_protection" "main_branch_protection" {
     dismiss_stale_reviews = true
   }
 }
-
