@@ -14,7 +14,7 @@ resource "github_repository_dependabot_security_updates" "dependabot" {
   enabled    = true
 }
 resource "github_branch_protection" "main_branch_protection" {
-  for_each                        = var.github_repositories
+  for_each                        = local.public_repositories
   repository_id                   = github_repository.repository[each.key].id
   pattern                         = "main"
   lock_branch                     = true

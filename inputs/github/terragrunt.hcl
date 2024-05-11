@@ -28,15 +28,29 @@ inputs = {
     iac = {
       archive_on_destroy     = true
       delete_branch_on_merge = true
+      dependabot_enable      = true
       description            = "Monorepo for Infrastructure as Code."
       topics                 = ["github", "terraform", "terragrunt"]
       visibility             = "public"
+    }
+    learning-and-development = {
+      archive_on_destroy     = true
+      delete_branch_on_merge = true
+      description            = "Labs for training."
+      visibility             = "private"
     }
     msanavia = {
       archive_on_destroy     = true
       delete_branch_on_merge = true
       description            = "GitHub Personal Profile"
       visibility             = "public"
+    }
+    "setlist.fm-bot" = {
+      archive_on_destroy     = true
+      delete_branch_on_merge = true
+      description            = "Python script that will predict an artist's setlist  for a given tour based on past setlist of the same tour."
+      topics                 = ["python", "http"]
+      visibility             = "private"
     }
   }
 }
