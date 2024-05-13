@@ -36,6 +36,7 @@ jobs:
         uses: gruntwork-io/terragrunt-action@v2
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          DEBUG: true
         with:
           tf_version: ${{ env.tf_version }}
           tg_version: ${{ env.tg_version }}
