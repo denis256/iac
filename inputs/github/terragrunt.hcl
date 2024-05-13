@@ -30,7 +30,7 @@ inputs = {
       delete_branch_on_merge = true
       dependabot_enable      = true
       description            = "Monorepo for Infrastructure as Code."
-      topics                 = ["terraform", "terragrunt", "github", "github-actions"]
+      topics                 = ["terraform", "terragrunt", "github"]
       visibility             = "public"
     }
     learning-and-development = {
