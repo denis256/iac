@@ -45,6 +45,13 @@ inputs = {
       description            = "GitHub Personal Profile"
       visibility             = "public"
     }
+    react-app-cicd = {
+      archive_on_destroy     = true
+      delete_branch_on_merge = true
+      description            = "Production-Grade workflow with CICD deployment."
+      topics                 = ["react", "cicd", "github-actions", "travisci", "travisci", "aws-eb"]
+      visibility             = "public"
+    }
     "setlist.fm-bot" = {
       archive_on_destroy     = true
       delete_branch_on_merge = true
