@@ -5,7 +5,7 @@ on:
 env:
   tf_version: '1.5.7'
   tg_version: '0.58.3'
-  working_dir: 'iac'
+  working_dir: 'inputs'
 
 jobs:
   checks:
