@@ -1,4 +1,11 @@
+remote_state {
+  backend = "gcs"
+  config = {
+    bucket = "test-terraform-states-msanavia"
+    prefix = "iac/inputs/${path_relative_to_include()}/"
 
+  }
+}
 
 locals {
   providers = try(yamldecode(file("${get_original_terragrunt_dir()}/providers.yaml")), [])
@@ -9,6 +16,7 @@ generate "versions" {
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 terraform {
+  backend "gcs" {}
 
   required_providers {
     %{if contains(local.providers, "github")}
